@@ -1,0 +1,75 @@
+//Media mixin desktop first
+@mixin for-tablet-portrait-up {
+  @media (max-width: 600px) { @content; }
+}
+@mixin for-tablet-landscape-up {
+  @media (max-width: 900px) { @content; }
+}
+@mixin for-desktop-up {
+  @media (max-width: 1200px) { @content; }
+}
+@mixin for-big-desktop-up {
+  @media (max-width: 1800px) { @content; }
+}
+
+@mixin font-primary($size: false, $colour: false, $weight: false, $lh: false, $style: false) {
+	font-family: 'Montserrat', sans-serif;
+	@if $size		{ font-size: $size; }
+	@if $colour	{ color: $colour; }
+	@if $weight	{ font-weight: $weight; }
+	@if $lh			{ line-height: $lh; }
+	@if $style	{ font-style: $style; }
+}
+
+@mixin font-secondary($size: false, $colour: false, $weight: false, $lh: false, $style: false) {
+	font-family: 'PF Regal Display Pro', serif;
+	@if $size		{ font-size: $size; }
+	@if $colour	{ color: $colour; }
+	@if $weight	{ font-weight: $weight; }
+	@if $lh			{ line-height: $lh; }
+	@if $style	{ font-style: $style; }
+}
+
+
+
+
+
+
+//http://css-live.ru/articles-css/pravilnye-kontrolnye-tochki-v-css.html
+// //Media mixin mobile first
+// @mixin for-phone-only {
+//   @media (max-width: 599px) { @content; }
+// }
+// @mixin for-tablet-portrait-up {
+//   @media (min-width: 600px) { @content; }
+// }
+// @mixin for-tablet-landscape-up {
+//   @media (min-width: 900px) { @content; }
+// }
+// @mixin for-desktop-up {
+//   @media (min-width: 1200px) { @content; }
+// }
+// @mixin for-big-desktop-up {
+//   @media (min-width: 1800px) { @content; }
+// }
+
+// usage
+// .my-box {
+//   padding: 10px;
+
+//   @include for-desktop-up {
+//     padding: 20px;
+//   }
+// }
+
+
+
+//Font Mixin
+// 	$default: sans-serif;
+// 	@if $family	{ font-family: $family, $default; }
+// 	@if $size		{ font-size: $size; }
+// 	@if $colour	{ color: $colour; }
+// 	@if $weight	{ font-weight: $weight; }
+// 	@if $lh			{ line-height: $lh; }
+// }
+

@@ -1,0 +1,103 @@
+doctype html
+html(lang = 'ru')
+	head
+		meta(charset = 'UTF-8')
+		meta(name="viewport" content="width=device-width, initial-scale=1.0")
+		meta(http-equiv="X-UA-Compatible" content="ie=edge")
+
+		link(rel="stylesheet" href="css/style.css")
+		title Портфолио
+
+		//- Favicon
+		link(rel='shortcut icon', href='favicon/favicon.ico', type='image/x-icon')
+		link(rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png")
+		link(rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png")
+		link(rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png")
+		link(rel="manifest" href="favicon/site.webmanifest")
+		link(rel="mask-icon" href="favicon/safari-pinned-tab.svg" color="#5bbad5")
+		meta(name="msapplication-TileColor" content="#da532c")
+		meta(name="theme-color" content="#ffffff")
+
+	body.body
+		div#page
+			header.header
+				div.container
+					div.header-info
+						div.logo
+							a.logo__link(href="#!")
+
+						div.about
+							div.author
+								p.author__text Частный веб-дизайнер, выпускник WDI,
+								p.author__text Взлом конверсии 3.0
+							div.communication
+								div.phone
+									a.phone__link(href="#!") 8 912 067 48 24
+								ul.messenger
+									li.messenger__item
+										a.messenger__link(href="#!") Звонок
+									li.messenger__item
+										a.messenger__link(href="#!") WhatsApp
+									li.messenger__item
+										a.messenger__link(href="#!") Viber
+									li.messenger__item
+										a.messenger__link(href="#!") Telegram
+
+			main.main
+				div.container
+					div.main-info
+
+						div.tagline
+							p.tagline__text делаею на совесть, как для себя
+
+						div.offer
+							div.offer-info
+								div.header
+									h1.header__title Узнайте стоимость веб–дизайна, который увеличит вашу
+										span.header__title.header__title_colored прибыль на 50-240%
+										span.header__title.header__title_pick-out и выделит среди конкурентов
+								div.content
+									div.description
+										p.description__text
+											| Благодаря глубокому анализу целевой аудитории, компании,
+											| конкурентной разведки и эксклюзивной упаковки вашего продукта
+
+									div.cards
+										div.card
+											header.card-header
+												img.card-header__img(src="img/icon_money.png", alt="")
+											div.card-content
+												h3.card-content__title Делаю в срок
+												p.card-content__text Иначе заплачу штраф 1000 &#8381; за день просрочки
+								//- 		div.card
+								//- 			h3.card__title Работаю по договору
+								//- 			p.card__text Составлю смету по каждому этапу и формирую критерии принятия работы
+								//- div.cost
+									button.cost__button Рассчитать стоимость
+									sapn.cost__text Расчет стоимости вас ни к чему не обязывает
+
+						div.video
+							button.video__button
+
+			footer.footer
+				div.container
+					div.footer-info
+						div.privacy
+							div.privacy__links
+								a.privacy__link(href="#!") Политика конфиденциальности
+							p.privacy__text ИП Ильязов ОГРНИП 316010500061979 ИНН 010516031295
+						div.companies
+							img.companies__image(src="img/icon_logo-company-1.png", alt="")
+							img.companies__image(src="img/icon_logo-company-2.png", alt="")
+							img.companies__image(src="img/icon_logo-company-3.png", alt="")
+							img.companies__image(src="img/icon_logo-company-4.png", alt="")
+							img.companies__image(src="img/icon_logo-company-5.png", alt="")
+							img.companies__image(src="img/icon_logo-company-6.png", alt="")
+						div.social
+							a.social__link(href="#!") #ilyazovstudio
+							a.social__link(href="#!") #
+							a.social__link(href="#!") #
+
+
+
+		script(src="js/script.js")
