@@ -65,6 +65,7 @@ gulp.task("style", () => {
 const concat = require("gulp-concat");
 const uglify = require("gulp-uglify");
 const obfuscator = require('gulp-javascript-obfuscator');
+const babel = require('gulp-babel');
 // для сборки в продакшен gulp --type=build
 
 gulp.task("js", () => {
@@ -78,6 +79,7 @@ gulp.task("js", () => {
       plumber({ errorHandler: notify.onError("Error: <%= error.message %>") })
     )
     .pipe(gutil.env.type === "build" ? gutil.noop() : sourcemaps.init())
+    .pipe(babel({presets: ['@babel/env']}))
     .pipe(uglify())
     .pipe(concat("script.js"))
     .pipe(gutil.env.type === "build" ? gutil.noop() : sourcemaps.write())
