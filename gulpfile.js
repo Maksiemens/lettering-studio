@@ -71,7 +71,7 @@ const babel = require('gulp-babel');
 gulp.task("js", () => {
   gulp
     .src([
-      "dev/libs/jquery/jquery-3.3.1.min.js",
+      "dev/libs/jquery/jquery-3.4.0.min.js",
       "dev/libs/**/*.js",
       "dev/js/*.js"
     ])
@@ -79,7 +79,7 @@ gulp.task("js", () => {
       plumber({ errorHandler: notify.onError("Error: <%= error.message %>") })
     )
     .pipe(gutil.env.type === "build" ? gutil.noop() : sourcemaps.init())
-    .pipe(babel({presets: ['@babel/env']}))
+    // .pipe(babel({presets: ['@babel/env']}))
     .pipe(uglify())
     .pipe(concat("script.js"))
     .pipe(gutil.env.type === "build" ? gutil.noop() : sourcemaps.write())

@@ -69,8 +69,8 @@ html(lang = 'ru')
 									button.cost__button Рассчитать стоимость
 									span.cost__text Расчет стоимости вас ни к чему не обязывает
 
-						div.video.js-videoDiv
-							button.video__button.js-videoButton
+						div.video-play
+							button.video-play__button.js-videoPlayButton
 
 			footer.footer
 				div.container
@@ -79,7 +79,7 @@ html(lang = 'ru')
 							div.privacy__links
 								a.privacy__link(href="#!") Политика конфиденциальности
 							p.privacy__text ИП Ильязов ОГРНИП 316010500061979 ИНН 010516031295
-						div.companies
+						div.companies#target
 							img.companies__image(src="img/icon_logo-company-1.png", alt="Компания-1")
 							img.companies__image(src="img/icon_logo-company-2.png", alt="Компания-2")
 							img.companies__image(src="img/icon_logo-company-3.png", alt="Компания-3")
@@ -100,6 +100,7 @@ html(lang = 'ru')
 												1.42 3.692 1.054 5.16-.638 2.556-3.036-2.024-4.035-4.305-.241-.548-.315-.974-1.175-.974h-3.255c-.492 0-.787.16
 												-.787.516 0 .602 2.96 6.72 5.786 9.77 2.756 2.975 5.48 2.708 7.376 2.708z`)
 
-
+		include includes/popup
 
 		script(src="js/script.js")
+
