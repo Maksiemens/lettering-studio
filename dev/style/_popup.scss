@@ -1,0 +1,239 @@
+.popup-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 500;
+  background-color: rgba(0, 0, 0, 0.8);
+  padding: 0 15px;
+}
+
+.popup {
+  width: 100%;
+  max-width: 900px;
+  padding: 30px;
+  // position: relative;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+
+  display: flex;
+  justify-content: space-between;
+  // align-items: center;
+  border-radius: 10px;
+  background-color: #fff;
+
+
+
+  .play {
+    width: 50%;
+    // padding: 15px;
+    position: relative;
+
+    &__iframe {
+      display: block;
+      width: 100%;
+      height: 100%;
+      position: absolute;
+    }
+  }
+
+  .order {
+    width: 45%;
+    // padding: 15px;
+  }
+
+  .heading {
+
+    &__title {
+      @include font-primary(21px, #000, 700);
+    }
+
+    &__subtitle {
+      margin-top: 35px;
+      @include font-primary(14px, #000, 400);
+    }
+  }
+
+  .form {
+    margin-top: 35px;
+
+    &__group {
+
+      &_checkbox {
+        display: flex;
+        width: 100%;
+      }
+    }
+
+    &__label {
+      display: block;
+
+      &_checkbox {
+        position: relative;
+        cursor: pointer;
+
+        &::before {
+          content:'';
+          -webkit-appearance: none;
+          background-color: transparent;
+          border: 2px solid #0079bf;
+          box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05), inset 0px -15px 10px -12px rgba(0, 0, 0, 0.05);
+          padding: 10px;
+          display: inline-block;
+          position: relative;
+          vertical-align: middle;
+          cursor: pointer;
+          margin-right: 5px;
+        }
+      }
+    }
+
+    &__input {
+
+      &_checkbox {
+        display: none;
+        cursor: pointer;
+
+        &:checked + .form__label_checkbox::after {
+          content: '';
+          display: block;
+          position: absolute;
+          top: 2px;
+          left: 9px;
+          width: 6px;
+          height: 14px;
+          border: solid #0079bf;
+          border-width: 0 2px 2px 0;
+          transform: rotate(45deg);
+        }
+      }
+
+      &_tel {
+        margin-top: 10px;
+        display: block;
+        width: 100%;
+        padding: 10px 10px;
+        border: 1px solid #000;
+        @include font-primary(16px, #000, 400);
+      }
+
+      &::placeholder {
+        @include font-primary(16px, #000, 400);
+      }
+    }
+
+    &__button {
+      margin-top: 20px;
+      display: block;
+      width: 100%;
+      padding: 20px 35px;
+      border-radius: 32px;
+      border: 1px solid #000;
+      background-color: $color-5;
+      @include font-primary(16px, #000, 500);
+    }
+  }
+
+  .close {
+    position: absolute;
+    top: -10px;
+    right: -5px;
+
+    &__button {
+
+    }
+  }
+}
+
+.form__input_checkbox:checked + .form__label_checkbox:after {
+  content: '';
+  display: block;
+  position: absolute;
+  top: 2px;
+  left: 9px;
+  width: 6px;
+  height: 14px;
+  border: solid #0079bf;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+
+
+// @keyframes fadeOut {
+//   from {
+//     opacity: 1;
+//   }
+
+//   to {
+//     opacity: 0;
+//   }
+// }
+
+// .fadeOut {
+//   animation-name: fadeOut;
+// }
+
+
+
+// .fadeIn {
+//   animation-name: fadeIn;
+// }
+
+// .animated {
+//   animation-duration: 1s;
+//   animation-fill-mode: both;
+// }
+
+// .animated.infinite {
+//   animation-iteration-count: infinite;
+// }
+
+// .animated.delay-1s {
+//   -webkit-animation-delay: 1s;
+//   animation-delay: 1s;
+// }
+
+// .animated.delay-2s {
+//   animation-delay: 2s;
+// }
+
+// .animated.delay-3s {
+//   animation-delay: 3s;
+// }
+
+// .animated.delay-4s {
+//   animation-delay: 4s;
+// }
+
+// .animated.delay-5s {
+//   animation-delay: 5s;
+// }
+
+// .animated.fast {
+//   animation-duration: 800ms;
+// }
+
+// .animated.faster {
+//   animation-duration: 500ms;
+// }
+
+// .animated.slow {
+//   animation-duration: 2s;
+// }
+
+// .animated.slower {
+//   animation-duration: 3s;
+// }
+
+// @media (print), (prefers-reduced-motion) {
+//   .animated {
+//     animation: unset !important;
+//     transition: none !important;
+//   }
+// }
+
