@@ -12,9 +12,10 @@
 @import "temp";
 @import "popup";
 
-
-
-
+// LAZY
+// https://preview.themeforest.net/item/porto-responsive-wordpress-ecommerce-theme/full_screen_preview/9207399
+// https://tools.pingdom.com/
+// https://preview.thembay.com/cena/
 
 
 //Start
@@ -25,7 +26,7 @@ html, body {
 
 body {
   min-width: 300px;
-  background: url("../img/bg_body.jpg") no-repeat center center / cover;
+  background: url("../img/bg_body-4.png") no-repeat center center / cover;
   // background: linear-gradient(117deg, rgba(0, 12, 17, 0.4) 0%, rgba(17, 45, 40, 0.4) 100%) rgb(46, 46, 49);
   // background: linear-gradient(108deg, rgb(23, 33, 35) 0%, rgb(38, 55, 45) 100%);
   // background: rgb(46, 46, 49);
@@ -145,15 +146,17 @@ body {
 .main {
 
   &-info {
+    max-width: 900px;
     // margin-left: 135px;
-    // display: flex;
-    // justify-content: space-between;
+    display: flex;
+    justify-content: space-between;
+    position: relative;
     // align-items: center;
     // position: relative;
 
-    display: grid;
-    grid-template-columns: 145px 1fr 1fr;
-    justify-content: space-between;
+    // display: grid;
+    // grid-template-columns: 145px 1fr 1fr;
+    // justify-content: space-between;
     // grid-column-gap: 25px;
 
     &__text {
@@ -196,8 +199,6 @@ body {
 
     &__title {
       @include font-secondary(46px, $color-1, 700, 60px);
-
-
 
       &_colored {
         // display: inline-flex;
@@ -251,7 +252,7 @@ body {
     margin-top: 50px;
     display: flex;
     justify-content: space-between;
-    padding-left: 45px;
+    padding: 0 60px;
     // width: 100%;
     // max-width: 650px;
   }
@@ -296,9 +297,9 @@ body {
   .cost {
 
     position: absolute;
-    right: -40%;
+    right: -35%;
     bottom: -10%;
-    // z-index: 500;
+    z-index: 500;
 
     display: flex;
     flex-direction: column;
@@ -342,7 +343,7 @@ body {
 
 
 .video-play {
-  justify-self: end;
+
   width: 660px;
   height: 375px;
   background: url("../img/bg_video.png") no-repeat center center / contain;
@@ -350,8 +351,10 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  position: relative;
-  pointer-events: none;
+  // position: relative;
+  position: absolute;
+  left: 127%;
+  // pointer-events: none;
 
   // &.hide-pseudo {
 
@@ -362,13 +365,13 @@ body {
 
   &::before,
   &::after {
-
     content: '';
     display: block;
     position: absolute;
-    border-width: 2px;
+    border-width: 1px;
     border-style: dotted;
     border-radius: 50%;
+    // https://codepen.io/jsnkuhn/pen/KHgyl
   }
 
   &::before {
@@ -393,7 +396,7 @@ body {
     transition: all 0.5s;
     position: relative;
     z-index: 500;
-    pointer-events: auto;
+    // pointer-events: auto;
 
     &::before {
       content: '';
