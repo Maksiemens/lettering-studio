@@ -1,24 +1,16 @@
 div.popup-overlay.js-popupOverlay
 	div.popup.js-popupContent
-		div.play.js-loadIframe
 		div.order
 			header.heading
-				h2.heading__title
-					| Закажите выезд специалиста на Ваш объект и получите детальную консультацию
-				h5.heading__subtitle
-					| Менеджер перезвонит по указаному номеру, чтобы назначить удобное для Вас время
+				h2.heading__title Закажите обратный звонок
+				h3.heading__subtitle перезвоню в течении 15 минут
 			form.form(action="#")
 				div.form__group
-					label.form__label(for="phone") Введите номер телефона
-					input.form__input.form__input_tel.js-formInputPhone(id="phone" type="tel" required)
+					input(type="tel" required placeholder="Введите номер в любом формате").form__input
 				div.form__group
-					button(type="submit").form__button Заказать выезд специалиста
-
-				div.form__group.form__group_checkbox
-					input.form__input.form__input_checkbox(type="checkbox" id="checkbox" )
-					label.form__label.form__label_checkbox(for="checkbox")
-					span.form__text Вы соглашаетесь с
-						a.form__link(href="#!") условиями обработки персональных данных
-
+					button(type="submit").form__button
+						span.form__text Заказать обратный звонок
+				div.content
+					p.content__text Нажимаю на кнопку вы даете согласие на обработку персональных данных
 		div.close
-			button.close__button.js-closeButton &#x274C;
+			button.close__button.js-closeButton
