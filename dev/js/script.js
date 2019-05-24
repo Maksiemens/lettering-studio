@@ -1,22 +1,16 @@
 'use strict';
-// https://codepen.io/riogrande/pen/QEGmRL?editors=1010
-// http://www.mloncarek.com/blog/css-animation-with-display-property-using-jquery-trick
-// https://jonsuh.com/hamburgers/
 
 $(document).ready(function() {
-
+  // window.open('mailto:me@http://stackoverflow.com/');
   // Popup
-  var $calculateCostButton = $('.js-calculateCostButton');
+  var $messengerButton = $('.js-messengerButton');
+  // var $calculateCostButton = $('.js-calculateCostButton');
   var $popupOverlay = $('.js-popupOverlay');
   var $popupContent = $('.js-popupContent');
   var $closeButton = $('.js-closeButton');
 
-  function closePopup() {
-    $popupOverlay.fadeOut();
-  }
-
-  $calculateCostButton.on('click', function() {
-    $popupOverlay.fadeIn().css('display', 'flex');
+  $messengerButton.on('click', function() {
+    $popupOverlay.css('display', 'flex').hide().fadeIn();
   });
 
   $closeButton.on('click', function() {
@@ -30,5 +24,115 @@ $(document).ready(function() {
   $popupContent.on('click', function() {
     event.stopPropagation();
   });
-});
 
+  function closePopup() {
+    $popupOverlay.fadeOut();
+  }
+
+  // Hamburger
+  var $hamburger = $('.js-hamburger');
+  var $communication = $('.js-communication');
+  $hamburger.on('click', function(event) {
+    $communication.fadeToggle(150);
+    $hamburger.toggleClass('is-active');
+  });
+
+  // function scrollbarWidth() {
+  //   var div = $('<div style="width:50px;height:50px;overflow:hidden;position:absolute;top:-200px;left:-200px;"><div style="height:100px;"></div>');
+  //   // Append our div, do our calculation and then remove it
+  //   $('body').append(div);
+  //   var w1 = $('div', div).innerWidth();
+  //   div.css('overflow-y', 'scroll');
+  //   var w2 = $('div', div).innerWidth();
+  //   $(div).remove();
+  //   return (w1 - w2);
+  // }
+
+  $(window ).on('resize', function(event) {
+    var $windowWidth = $(window).width();
+    if($windowWidth >= 600) {
+      $communication.css('display', 'flex');
+      $hamburger.removeClass('is-active');
+      $hamburger.hide();
+    }
+    if($windowWidth <= 600) {
+      $communication.css('display', 'none');
+      $hamburger.removeClass('is-active');
+      $hamburger.show();
+    }
+  });
+
+  // FancyBox
+  var $worksButton = $('.js-worksButton');
+  var $fancyboxGallery = $('[data-fancybox="gallery"]');
+  $worksButton.on('click', function(event) {
+    $('body').addClass('full-height');
+  });
+
+  $fancyboxGallery.fancybox({
+    // Options will go here
+    loop: false,
+    keyboard: true,
+    wheel: false,
+    afterClose: function(instance, slide) {
+      $('body').removeClass('full-height');
+    }
+  });
+
+  // AJAX
+  var $form =  $('.js-form');
+  var $order =  $('.js-order');
+  var $loader =  $('.blind-loader');
+  var $done = $('.blind-success');
+	var $warning = $('.blind-error');
+
+  $form.on('submit', function(event) {
+    event.preventDefault();
+
+    $.ajax({
+      url: 'php/sendcall.php',
+      method: 'POST',
+      data: $form.serialize(),
+
+      beforeSend: function() {
+        $order.addClass('blind-parent');
+        $loader.fadeIn();
+      },
+
+      success: function() {
+        $loader.fadeOut();
+        $done.fadeIn(function() {
+					setTimeout(function() {
+						$done.fadeOut();
+					}, 3000);
+				});
+      },
+
+      complete: function() {
+        $form[0].reset();
+
+        setTimeout(function() {
+          closePopup();
+        }, 2000);
+
+        setTimeout(function() {
+          $order.removeClass('blind-parent');
+        }, 2500);
+      },
+
+      error: function(){
+        $loader.fadeOut();
+        $warning.fadeIn(function() {
+					setTimeout(function() {
+						$warning.fadeOut();
+					}, 3000);
+				});
+      }
+    });
+
+    if ( typeof yaglaaction === 'function' ) {
+      yaglaaction('send-form');
+    }
+  });
+
+});

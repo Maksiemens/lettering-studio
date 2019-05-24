@@ -1,0 +1,19 @@
+%primary_button {
+  display: block;
+  width: 375px;
+  background: url('../img/bg_button-noise.png') repeat;
+  border-radius: 10px;
+  padding: 5px;
+  box-shadow: 0 4px 0 0 $color-9, 0px 15px 10px -15px $color-5;
+  transition: all 0.3s;
+
+  &:hover {
+    box-shadow: 0 1px 0 0 $color-9, 0px 3px 2px -3px $color-5;
+    transform: translateY(3px);
+  }
+
+  &:active {
+    position: relative;
+    top: 1px;
+  }
+}

@@ -2,12 +2,12 @@
   display: none;
   justify-content: center;
   align-items: center;
-  position: fixed;
+  position: absolute;
   top: 0;
   right: 0;
   bottom: 0;
   left: 0;
-  z-index: 500;
+  z-index: 700;
   background-color: rgba($color-1, 0.7);
   padding: 0 35px 0 15px;
 
@@ -38,7 +38,11 @@
     align-items: center;
 
     @include for-tablet-portrait-up {
-        padding: 25px 15px;
+      padding: 25px 10px;
+    }
+
+    &.hide {
+      display: none;
     }
   }
 
@@ -51,18 +55,24 @@
 
       @include for-tablet-portrait-up {
         @include font-primary(17px, $color-1, 900, 23px);
-        max-width: 225px;
+        max-width: 214px;
       }
     }
 
     &__subtitle {
-      margin-top: 15px;
+      margin-top: 5px;
       @include font-primary(20px,  $color-1, 400);
       text-align: center;
 
       @include for-tablet-portrait-up {
-        @include font-primary(16px, $color-1, 400);
+        @include font-primary(15px, $color-1, 400);
       }
+    }
+
+    @include for-tablet-portrait-up {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
   }
 
@@ -101,25 +111,10 @@
 
     &__button {
       margin-top: 15px;
-      display: block;
-      width: 375px;
-      height: 85px;
-      background-color: $color-3;
-      border-radius: 10px;
-      padding: 5px;
-      box-shadow: 0px 15px 30px rgba($color-5, 0.5);
-      border-bottom: 4px solid $color-9;
-      transition: all 0.3s;
+      @extend %primary_button;
 
       @include for-tablet-portrait-up {
         width: 245px;
-        height: 80px;
-      }
-
-      &:hover {
-        border-bottom: 1px solid $color-9;
-        box-shadow: 0px 10px 15px rgba($color-5, 0.5);
-        transform: translateY(3px);
       }
     }
 
@@ -134,7 +129,7 @@
       text-transform: uppercase;
 
       @include for-tablet-portrait-up {
-        padding: 25px 20px;
+        padding: 24px 14px;
         @include font-primary(12px, $color-7, 700);
       }
     }
@@ -145,7 +140,7 @@
         margin-top: 20px;
         @include font-primary(12px, $color-4, 400, 17px);
         text-align: center;
-        max-width: 225px;
+        max-width: 250px;
       }
     }
   }

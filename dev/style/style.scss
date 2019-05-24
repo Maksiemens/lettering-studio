@@ -1,16 +1,17 @@
 @import 'destyle';
 
 //libs
-// @import '../libs/magnific-popup/magnific-popup.css';
-// @import '../libs/fancybox/jquery.fancybox.min.css';
+@import '../libs/fancybox/jquery.fancybox.min.css';
 
 //separate files
-@import 'animate';
 @import 'fonts';
 @import 'variables';
 @import 'mixins';
-@import 'temp';
+@import 'animate-custom';
+@import 'temp-selectors';
 @import 'popup';
+@import 'loader';
+@import 'blind';
 
 
 //Start
@@ -22,10 +23,14 @@ body {
 
 body {
   min-width: 300px;
+
+  &.full-height {
+    height: 100%;
+  }
 }
 
 #page {
-  background: url('../img/bg_page.jpg') no-repeat center center / cover;
+  background: url('../img/bg_page.png') repeat;
   min-height: 100%;
   overflow: hidden;
   position: relative;
@@ -34,6 +39,10 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+
+  @include for-tablet-portrait-up {
+    padding: 15px 0 30px 0;
+  }
 }
 
 .container {
@@ -57,14 +66,9 @@ body {
   }
 
   .about {
-    width: 245px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-
-    @include for-tablet-portrait-up {
-      width: 170px;
-    }
   }
 
   .logo {
@@ -82,6 +86,7 @@ body {
   }
 
   .author {
+    margin-left: 20px;
     &__text {
       @include font-primary(14px, $color-11, 400, 17px);
 
@@ -95,17 +100,29 @@ body {
     display: flex;
     flex-direction: column;
     align-items: flex-end;
-    // position: relative;
-    // z-index: 500;
 
     @include for-tablet-portrait-up {
       display: none;
+      width: 210px;
+      position: fixed;
+      top: 0;
+      right: 0;
+      background-color: $color-2;
+      border-radius: 0 0 0 10px;
+      box-shadow: -6px 6px 18px rgba($color-1, 0.3);
+      padding: 60px 20px 35px 35px;
     }
   }
 
   .phone {
     &__link {
+      display: block;
       @include font-primary(19px, $color-16, 500);
+      transition: all 0.3s;
+
+      @include for-tablet-portrait-up {
+        border-bottom: 2px solid rgba($color-4, 0.2);
+      }
     }
   }
 
@@ -113,6 +130,11 @@ body {
     margin-top: 10px;
     display: flex;
     align-items: center;
+
+    @include for-tablet-portrait-up {
+      flex-direction: column;
+      align-items: flex-end;
+    }
 
     &__item {
       @include font-primary(12px, $color-4, 400);
@@ -124,6 +146,12 @@ body {
       }
 
       &:last-child {
+        &::after {
+          display: none;
+        }
+      }
+
+      @include for-tablet-portrait-up {
         &::after {
           display: none;
         }
@@ -141,18 +169,85 @@ body {
         border-bottom: 1px solid transparent;
         @include font-primary(13px, $color-1, 400);
       }
+
+      @include for-tablet-portrait-up {
+        margin-top: 10px;
+      }
+    }
+
+    &__button {
+      @extend .messenger__link;
+    }
+  }
+
+  .hamburger {
+    display: none;
+    cursor: pointer;
+
+    @include for-tablet-portrait-up {
+      display: block;
+    }
+
+    &__box {
+      position: relative;
+      width: 20px;
+      height: 15px;
+    }
+
+    &__inner {
+      position: absolute;
+      width: 20px;
+      height: 3px;
+      border-radius: 4px;
+      background-color: $color-1;
+      transition: all 0.15s ease;
+
+      &::before,
+      &::after {
+        content: '';
+        display: block;
+        position: absolute;
+        top: 6px;
+        width: 13px;
+        height: 3px;
+        border-radius: 4px;
+        background-color: $color-1;
+        transition: all 0.15s ease;
+      }
+
+      &::after {
+        top: 12px;
+        width: 17px;
+      }
+    }
+
+    &.is-active {
+      .hamburger__inner {
+        background-color: $color-13;
+        transform: translate3d(0, 10px, 0) rotate(45deg);
+
+        &::before, &::after {
+          background-color: $color-13;
+          width: 15px;
+        }
+
+        &::before {
+          opacity: 0;
+        }
+
+        &::after {
+          width: 20px;
+          transform: translate3d(0, -12px, 0) rotate(-90deg);
+        }
+      }
     }
   }
 }
 
 
-
-
-
-
 .main {
-
   &__container {
+    margin-top: 50px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -195,7 +290,7 @@ body {
 
       &_rotated {
         @include font-primary(12px, rgba($color-4, 0.5), 700, 18px);
-        letter-spacing: 2px;
+        letter-spacing: 1.5px;
         max-width: 190px;
         position: absolute;
         top: 100px;
@@ -208,6 +303,10 @@ body {
           position: static;
           transform: none;
           @include font-primary(10px, rgba($color-4, 0.5), 700, 18px);
+        }
+
+        @include for-tablet-portrait-up {
+          letter-spacing: normal;
         }
       }
     }
@@ -231,7 +330,11 @@ body {
   }
 
   .description {
-    margin-top: 30px;
+    margin-top: 22px;
+
+    @include for-tablet-portrait-up {
+      margin-top: 15px;
+    }
 
     &__text {
       @include font-secondary(23px, rgba($color-1, 0.85), 400, 30px);
@@ -244,40 +347,45 @@ body {
       @include for-tablet-portrait-up {
         @include font-primary(17px, rgba($color-1, 0.85), 400, 22px);
       }
+
+      &_break {
+        display: block;
+
+        @include for-tablet-portrait-up {
+          display: inline;
+        }
+      }
     }
   }
 
   .cost {
+    margin-top: 50px;
 
     &__button {
-      margin-top: 35px;
+      @extend %primary_button;
       display: block;
-      width: 370px;
-      height: 85px;
-      background-color: $color-3;
+      width: 375px;
+      background: url('../img/bg_button-noise.png') repeat;
       border-radius: 10px;
       padding: 5px;
-      box-shadow: 0px 15px 30px rgba($color-5, 0.5);
-      border-bottom: 4px solid $color-9;
+      box-shadow: 0 4px 0 0 $color-9, 0px 15px 10px -15px $color-5;
       transition: all 0.3s;
 
       &:hover {
-        border-bottom: 1px solid $color-9;
-        box-shadow: 0px 10px 15px rgba($color-5, 0.5);
+        box-shadow: 0 1px 0 0 $color-9, 0px 3px 2px -3px $color-5;
         transform: translateY(3px);
       }
 
       @include for-tablet-portrait-up {
         width: 285px;
-        height: 60px;
-        padding: 3px;
+        padding: 0 5px;
       }
     }
 
     &__text {
       display: block;
       padding: 26px 40px;
-      background-color: $color-3;
+      background: url('../img/bg_button-noise.png') repeat;
       border: 1px solid rgba($color-2, 0.32);
       border-radius: 10px;
       box-shadow: 0 0 0 1px rgba($color-8, 0.15);
@@ -285,7 +393,7 @@ body {
       text-transform: uppercase;
 
       @include for-tablet-portrait-up {
-        padding: 16px 25px;
+        padding: 15px 25px;
         @include font-primary(12px, $color-7, 700);
       }
     }
@@ -389,11 +497,6 @@ body {
       }
     }
 
-    &:active {
-      position: relative;
-      top: 1px;
-    }
-
     &:hover {
       transform: scale(1.07);
     }
@@ -414,9 +517,6 @@ body {
 
 
 
-
-
-
 .footer {
   position: relative;
   z-index: 500;
@@ -433,7 +533,8 @@ body {
   }
 
   .privacy {
-    max-width: 345px;
+    width: 100%;
+    max-width: 370px;
 
     @include for-tablet-portrait-up {
       order: 2;
@@ -503,6 +604,11 @@ body {
 
       &:hover {
         color: $color-1;
+      }
+
+      &_insta {
+        width: 16px;
+        height: 16px;
       }
     }
 

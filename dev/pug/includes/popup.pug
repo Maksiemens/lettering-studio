@@ -1,16 +1,27 @@
 div.popup-overlay.js-popupOverlay
 	div.popup.js-popupContent
-		div.order
+		div.order.js-order
 			header.heading
 				h2.heading__title Закажите обратный звонок
 				h3.heading__subtitle перезвоню в течении 15 минут
-			form.form(action="#")
+			form.form.js-form(name="popup-form")
 				div.form__group
-					input(type="tel" required placeholder="Введите номер в любом формате").form__input
+					input.form__input(type="tel" name="popup-form-tel" required placeholder="Введите номер в любом формате")
 				div.form__group
-					button(type="submit").form__button
+					button.form__button(type="submit")
 						span.form__text Заказать обратный звонок
 				div.content
-					p.content__text Нажимаю на кнопку вы даете согласие на обработку персональных данных
+					p.content__text Нажимая на кнопку вы даете согласие на обработку персональных данных
 		div.close
 			button.close__button.js-closeButton
+
+		div.blind.blind-success
+			div.blind__content
+				p.blind__text Спасибо!
+		div.blind.blind-error
+			div.blind__content
+				p.blind__text Сервер перегружен, попробуйте позже
+
+		div.blind.blind-loader
+			div.blind__content
+				div.loader

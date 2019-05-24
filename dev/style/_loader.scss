@@ -1,0 +1,8 @@
+.loader {
+  border: 10px solid $color-3;
+  border-top: 10px solid $color-10;
+  border-radius: 50%;
+  width: 70px;
+  height: 70px;
+  animation: spin 1.2s linear infinite;
+}

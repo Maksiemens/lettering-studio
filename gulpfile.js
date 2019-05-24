@@ -38,7 +38,7 @@ gulp.task("html", () => {
     .pipe(
       plumber({ errorHandler: notify.onError("Error: <%= error.message %>") })
     )
-    .pipe(htmlmin({ collapseWhitespace: true, removeComments: true }))
+    // .pipe(htmlmin({ collapseWhitespace: true, removeComments: true }))
     .pipe(gulp.dest("prod"));
 });
 
@@ -71,7 +71,7 @@ const babel = require('gulp-babel');
 gulp.task("js", () => {
   gulp
     .src([
-      "dev/libs/jquery/jquery-3.4.0.min.js",
+      "dev/libs/jquery/*.js",
       "dev/libs/**/*.js",
       "dev/js/*.js"
     ])
@@ -83,7 +83,7 @@ gulp.task("js", () => {
     .pipe(uglify())
     .pipe(concat("script.js"))
     .pipe(gutil.env.type === "build" ? gutil.noop() : sourcemaps.write())
-    .pipe(gutil.env.type === "build" ? obfuscator({compact: true, sourceMap: false}) : gutil.noop())
+    // .pipe(gutil.env.type === "build" ? obfuscator({compact: true, sourceMap: false}) : gutil.noop())
     .pipe(gulp.dest("prod/js"))
     .pipe(reload({ stream: true }));
 });
