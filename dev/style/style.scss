@@ -378,7 +378,6 @@ body {
 
       @include for-tablet-portrait-up {
         width: 285px;
-        padding: 0 5px;
       }
     }
 
@@ -586,34 +585,18 @@ body {
   }
 
   .social {
-    width: 55px;
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-end;
 
     @include for-tablet-portrait-up {
       order: 1;
+      align-items: center;
     }
 
-    &__link {
-      display: block;
-      width: 20px;
-      height: 20px;
-      @include font-primary(12px, $color-4, 400);
-      transition: color 0.3s;
-
-      &:hover {
-        color: $color-1;
-      }
-
-      &_insta {
-        width: 16px;
-        height: 16px;
-      }
-    }
-
-    &__svg {
-      fill: currentColor;
+    &__text {
+      @include font-primary(12px, $color-4, 400, 20px);
     }
   }
 }
