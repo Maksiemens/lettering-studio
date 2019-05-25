@@ -164,7 +164,7 @@ gulp.task("default", [
   "del"
 ]);
 
-gulp.task("dev", ["default", "watcher", "browserSync"]);
+gulp.task("dev", ["del", "default", "watcher", "browserSync"]);
 
 //watcher
 gulp.task("watcher", () => {

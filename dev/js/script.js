@@ -10,6 +10,7 @@ $(document).ready(function() {
   var $closeButton = $('.js-closeButton');
 
   $messengerButton.on('click', function() {
+    $(document).on('keydown', closeByEsc);
     $popupOverlay.css('display', 'flex').hide().fadeIn();
   });
 
@@ -26,7 +27,14 @@ $(document).ready(function() {
   });
 
   function closePopup() {
+    $(document).off('keydown', closeByEsc);
     $popupOverlay.fadeOut();
+  }
+
+  function closeByEsc(event) {
+    if (event.which == 27) {
+      closePopup();
+    }
   }
 
   // Hamburger
@@ -79,6 +87,20 @@ $(document).ready(function() {
     }
   });
 
+
+  // Input, prevent letters
+  var $formInput = $('.js-formInput');
+  $formInput.on('keypress', function(event) {
+
+    console.log('event.which ====>', event.which);
+    // if ( event.which != 8 && event.which != 0 && (event.which < 46 || event.which > 57)	) {
+
+    if ((event.which < 32 || event.which > 57) && (event.which !== 13 && event.which !== 8)) {
+      return false;
+    }
+  });
+
+
   // AJAX
   var $form =  $('.js-form');
   var $order =  $('.js-order');
@@ -129,10 +151,6 @@ $(document).ready(function() {
 				});
       }
     });
-
-    if ( typeof yaglaaction === 'function' ) {
-      yaglaaction('send-form');
-    }
   });
 
 });
